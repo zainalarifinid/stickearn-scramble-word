@@ -30,7 +30,7 @@ class WordSeeder extends Seeder
                 'updated_at' => Carbon\Carbon::now()
             ],
             [
-                'word' => 'apel',
+                'word' => 'apple',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
             ],
