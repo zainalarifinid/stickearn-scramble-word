@@ -99,6 +99,10 @@
                 overflow-y: auto;
             }
 
+            #container-login {
+                display: none;
+            }
+
             .animation-score{
                 display: none;
             }
@@ -146,6 +150,19 @@
                     </div>
                     <h2 class="question" >loading...</h2>
                 </div>
+                <div id="container-login" >
+                    <form style="display: flex;flex-direction: column;justify-content: center;" name="login" onsubmit="login()" >
+                        <div style="padding: 5px;" >
+                            <input name="username" style="padding: 5px;" />
+                        </div>
+                        <div style="padding: 5px;" >
+                            <input name="password" type="password" style="padding: 5px;" />
+                        </div>
+                        <div style="padding: 5px;" >
+                            <button style="padding: 5px; width: 90px;" >Login</button>
+                        </div>
+                    </form>
+                </div>
                 <form name="form-answer" >
                     <input class="form-control input-answer" id="user_answer" autofocus />
                     <div id="log_game" >Please type <i>START</i> to start the game.</div>
@@ -155,6 +172,7 @@
     </body>
     <script>
         var urlAPI = '/api';
+        var formLogin = document.getElementById('container-login');
         var formInput = document.getElementsByName('form-answer')[0];
         var displayQuestion = document.getElementsByClassName('question')[0];
         var displayScore = document.getElementById('score');
@@ -251,6 +269,9 @@
                 displayScore.innerText = 0;
                 displayGuessedWord.innerText = 0;
                 setQuestion();
+            }else if(answerValue === 'login' && !isGameStarted) {
+                formLogin.style.display = 'block';
+                this.style.display = 'none';
             }else{
                 sendAnswer(currentQuestion, answerValue);
             }
